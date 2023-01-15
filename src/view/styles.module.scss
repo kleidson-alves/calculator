@@ -1,0 +1,59 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  width: 25%;
+  height: 70%;
+
+  background-color: var(--gray-100);
+
+  border-radius: 15px;
+}
+
+.visor {
+  border-bottom: 1.5px solid var(--gray-100);
+  padding: 25px;
+}
+
+.keyboard {
+  display: flex;
+  height: 70%;
+  flex-direction: row;
+
+  #numbers {
+    flex: 0.6;
+    padding: 20px 1rem 0px 20px;
+
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    .lastRow {
+      grid-row: 4;
+      grid-column: 2;
+    }
+  }
+
+  #actions {
+    flex: 0.4;
+    padding: 20px 20px 0px 0px;
+
+    div {
+      height: 100%;
+      padding: 1rem;
+
+      background-color: var(--white);
+      border-radius: 15px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 0.5fr repeat(2, 1.5fr) 0.7fr;
+
+      gap: 0.4rem;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 15px;
+  background-color: var(--gray-100);
+  border: 1px solid var(--white);
+  p {
+    font-size: 1.5rem;
+  }
+
+  svg {
+    font-size: 30px;
+  }
+}
+
+#equal {
+  grid-column: span 2;
+  p {
+    font-size: 2.5rem;
+  }
+}
