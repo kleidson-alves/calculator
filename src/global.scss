@@ -46,6 +46,12 @@ button {
 button {
   cursor: pointer;
   border: none;
+
+  transition: filter 0.3s;
+
+  :hover {
+    filter: brightness(0.8);
+  }
 }
 
 a {

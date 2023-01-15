@@ -11,6 +11,8 @@ interface IDisplayContextData {
   previuslyValue: string;
   updateCurrentValue: (value: string) => void;
   updateOperator: (op: string) => void;
+  clearEntry: () => void;
+  clear: () => void;
 }
 
 interface DisplayProviderProps {
@@ -61,7 +63,10 @@ const DisplayProvider: React.FC<DisplayProviderProps> = ({ children }) => {
       if (op === "=" || operator !== "") {
         const a = Number(previuslyValue.split(" ")[0]);
         const b = Number(currentValue);
-        let result = 0;
+
+        console.log(a, b);
+
+        let result = b;
 
         if (operator === "+") {
           result = a + b;
@@ -70,11 +75,14 @@ const DisplayProvider: React.FC<DisplayProviderProps> = ({ children }) => {
         } else if (operator === "*") {
           result = a * b;
         } else if (operator === "/") {
-          result = a / b;
+          if (b !== 0) result = a / b;
+          else {
+            result = NaN;
+          }
         }
         setCurrentValue(result.toString());
         if (op === "=") {
-          setPreviuslyValue("");
+          setPreviuslyValue("0");
           setOperator("");
         } else {
           setPreviuslyValue(`${result.toString()} ${op}`);
@@ -91,6 +99,17 @@ const DisplayProvider: React.FC<DisplayProviderProps> = ({ children }) => {
     [currentValue, operator, previuslyValue]
   );
 
+  const clear = useCallback(() => {
+    if (isResult) {
+      setCurrentValue("0");
+      return;
+    }
+
+    setCurrentValue((s) =>
+      s.substring(0, s.length - 1) === "" ? "0" : s.substring(0, s.length - 1)
+    );
+  }, [isResult]);
+
   return (
     <DisplayContext.Provider
       value={{
@@ -98,6 +117,8 @@ const DisplayProvider: React.FC<DisplayProviderProps> = ({ children }) => {
         previuslyValue,
         updateCurrentValue,
         updateOperator,
+        clearEntry: () => setCurrentValue("0"),
+        clear,
       }}
     >
       {children}
