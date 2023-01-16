@@ -28,7 +28,7 @@
 
 .content {
   width: 25%;
-  height: 70%;
+  height: auto;
 
   background-color: var(--gray-100);
 
@@ -47,7 +47,7 @@
 
   #numbers {
     flex: 0.6;
-    padding: 20px 1rem 0px 20px;
+    padding: 20px 1rem 20px 20px;
 
     display: grid;
     gap: 0.4rem;
@@ -61,7 +61,7 @@
 
   #actions {
     flex: 0.4;
-    padding: 20px 20px 0px 0px;
+    padding: 20px 20px 20px 0px;
 
     div {
       height: 100%;
