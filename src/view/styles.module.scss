@@ -91,6 +91,7 @@
 
   div {
     background-color: var(--gray-800);
+    border-radius: 15px;
 
     .visor {
       border-color: var(--gray-500);
@@ -101,7 +102,7 @@
         }
       }
     }
-
+    
     #numbers {
       button {
         p {
